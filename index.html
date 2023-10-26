@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <title>Password Manager</title>
+    <link rel="stylesheet" href="style.css">
+<body>
+    <header>
+        <div class="logo">Password Manager</div>
+        <div class="header-content">
+            <div id="time-cnt"><span></span></div>
+            <div class="search-cnt">
+                <input type="text" id="search" class="inp" placeholder="Search USERID" spellcheck="false">
+                <svg id="search-btn" class="d-none-imp" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="23px" xmlns="http://www.w3.org/2000/svg"><path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path></svg>
+                <svg id="clear-search-btn" width="23" height="23" onclick="" xmlns="http://www.w3.org/2000/svg"><path d="M6.414 5A1 1 0 1 0 5 6.414L10.586 12 5 17.586A1 1 0 1 0 6.414 19L12 13.414 17.586 19A1 1 0 1 0 19 17.586L13.414 12 19 6.414A1 1 0 1 0 17.586 5L12 10.586 6.414 5Z"></path></svg>
+            </div>
+            <button id="pwd-add-btn" class="btn primary" type="button"><span>+</span>&nbsp;&nbsp;Password</button>
+            <button id="backup-btn" class="btn secondary" type="button">BackUp</button>
+            <button id="theme-btn" class="btn secondary" type="button">Dark Mode</button>
+        </div>
+    </header>
+    <main>
+        <div id="backup-frm-cnt" class="frm-cnt d-none-imp">
+            <form id="backup-frm" class="frm" data-action="add">
+                <div class="header">
+                    <p  id="backup-frm-title" class="frm-title">BackUp Data</p>
+                    <span id="backup-frm-close-btn" class="frm-close-btn">✖</span>
+                </div>
+                <div class="main">
+                    <div class="inp-cnt">
+                        <label for="backupdata" class="inp-label">&nbsp; BackUp Json</label>
+                        <textarea name="backupdata" class="inp" id="backupdata" cols="30" rows="10" spellcheck="false"></textarea>
+                        <div style="display: flex; justify-content: end;">
+                            <div id="copy-backup-btn" style="margin-right: 10px;" class='copy-btn tooltip'>Copy Backup Data
+                                <span class='tooltiptext'>Click to Copy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <button class="btn primary" type="submit">Configure</button>
+                </div>
+            </form>
+        </div>
+        <div id="pwd-frm-cnt" class="frm-cnt d-none-imp">
+            <form id="pwd-frm" class="frm" data-action="add">
+                <div class="header">
+                    <p  id="pwd-frm-title" class="frm-title">Add Password</p>
+                    <span id="pwd-frm-close-btn" class="frm-close-btn">✖</span>
+                </div>
+                <div class="main">
+                    <div class="inp-cnt">
+                        <label for="userid" class="inp-label">User ID<span class="inp-inp-symbol">*</span></label>
+                        <input type="text" id="userid" class="inp" name="userid" required  spellcheck="false" placeholder="example: david236">
+                    </div>
+                    <div class="inp-cnt">
+                        <label for="site" class="inp-label">Site<span class="inp-inp-symbol">*</span></label>
+                        <input type="url" id="site" class="inp" name="site" required spellcheck="false" placeholder="example: https://www.xyz.com">
+                    </div>
+                    <div class="inp-cnt">
+                        <label for="pwd" class="inp-label">Password<span class="inp-inp-symbol">*</span></label>
+                        <input type="text" id="pwd" name="pwd" class="inp" required  spellcheck="false" placeholder="*********">
+                    </div>
+                </div>
+                <div class="footer">
+                    <button class="btn primary" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+        <h1 class="pwd-header">Passwords</h1>
+        <div class="pwds-cnt">
+            <table class="pwds-table">
+                <thead>
+                    <th>USER ID</th>
+                    <th>Site</th>
+                    <th>PASSWORD</th>
+                    <th>Actions</th>
+                </thead>
+                <tbody class="pwds">
+                    <tr><td colspan='3' class='nopwd-display'>Loading... Passwords</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script src="logic.js"></script>
+</body>
+</html>
